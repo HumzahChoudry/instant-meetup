@@ -1,0 +1,27 @@
+.nav-wrapper {
+  background-color: yellow;
+  padding: 5px;
+}
+
+.brand-logo {
+  background-color: green;
+}
+
+.nav-bar {
+  background-color: grey;
+  list-style-type: none;
+  margin: 0;
+  padding: 5px;;
+}
+
+.nav-bar > li {
+  display: inline;
+  text-align: center;
+}
+.nav-links {
+  margin-left: -150px;
+  display: inline;
+}
+.nav-link {
+  float: right;
+}
