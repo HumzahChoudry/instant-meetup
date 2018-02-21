@@ -4,7 +4,7 @@ import './App.css';
 import './css/Navbar.css';
 import Navbar from './components/Navbar'
 import {Route, Switch} from 'react-router-dom';
-
+import Homepage from './components/Homepage'
 
 class App extends Component {
 
@@ -22,7 +22,7 @@ class App extends Component {
         <Switch>
           <Route path="/login" component={loginRender} />
 
-          <Route path="/" component={catchAllRender} />
+          <Route path="/" component={Homepage} />
 
         </Switch>
 

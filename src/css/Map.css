@@ -1,0 +1,11 @@
+.google-map {
+  resize: both;
+  grid-area: a;
+  width: 550px;
+  height: 300px;
+  border-color: black;
+  border-width: 1px;
+  grid-column-start: 1;
+  grid-row-start: 1;
+  margin: 0 auto;
+}
