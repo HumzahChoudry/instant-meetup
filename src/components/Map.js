@@ -7,13 +7,14 @@ const AnyReactComponent = ({ text }) => <div>{text}</div>;
 class Map extends Component {
 
   showMap = () => {
-    if (this.props.startingAddress == {}){
+    if (!!this.props.coords){
       return <GoogleMapReact
-        center={{lat: 40.7128, lng: -74.0060}}
-        defaultZoom={15} hoverDistance={100}> </GoogleMapReact>
+        center={{lat: this.props.coords[0], lng: this.props.coords[1]}}
+        defaultZoom={15} hoverDistance={100}>
+      </GoogleMapReact>
     } else {
       return   <GoogleMapReact
-        center={{lat: 40.7128, lng: -74.0060}}
+        center={{lat: this.props.coords[0], lng: this.props.coords[1]}}
         defaultZoom={15}
         hoverDistance={20}>
       </GoogleMapReact>
@@ -21,6 +22,7 @@ class Map extends Component {
   }
 
   render() {
+    debugger
     return (
       <div className="google-map item" position="relative">
         {this.showMap()}

@@ -1,5 +1,8 @@
 import React from "react";
 import MapContainer from './MapContainer'
+import FriendsContainer from './FriendsContainer'
+import MeetupsContainer from './MeetupsContainer'
+
 
 
 
@@ -27,7 +30,9 @@ class Homepage extends React.Component {
   render() {
     return (
       <div>
-        <MapContainer />
+        <MapContainer userCoords={[this.state.user_lat, this.state.user_lon]}/>
+        <FriendsContainer user={{id: 1, username: 'Humzah'}} />
+        <MeetupsContainer user={{id: 1, username: 'Humzah'}} />
       </div>
     )
   }
