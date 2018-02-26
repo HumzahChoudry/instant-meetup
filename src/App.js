@@ -1,29 +1,46 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import './css/Navbar.css';
+import './css/Friends.css';
+import './css/Meetups.css';
 import Navbar from './components/Navbar'
-import {Route, Switch} from 'react-router-dom';
+import {Route, Switch, Redirect} from 'react-router-dom';
 import Homepage from './components/Homepage'
+import LoginPage from './components/LoginPage'
+import { RestfulAdapter } from "./adapters";
+import { connect } from "react-redux";
+import { setUser, logout } from './actions'
+import {withRouter} from 'react-router-dom'
 
 class App extends Component {
 
+  setLoggedInUser = (user) => {
+    localStorage.setItem('token', user.token)
+  }
+
+  componentDidMount() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      console.log("about to get current user");
+      this.props.setUser()
+    }
+  }
+
+  removeLoggedInUser = () => {
+   localStorage.removeItem('token')
+   this.props.logout()
+   debugger
+   window.history.pushState({}, null, "/login")
+ }
 
   render() {
-    const loginRender = () => {
-      return (<h1>Login page</h1>)
-    }
-    const catchAllRender = () => {
-      return (<h1>Catch all page</h1>)
-    }
     return (
       <div className="App">
-        <Navbar />
+        <Navbar logout={this.removeLoggedInUser} user={this.props.user}/>
         <Switch>
-          <Route path="/login" component={loginRender} />
-
-          <Route path="/" component={Homepage} />
-
+          <Route path="/home" component={Homepage} />
+          <Route path="/login" component={LoginPage} />
+          <Redirect from="/" to="/home" />
         </Switch>
 
       </div>
@@ -31,4 +48,7 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {user: state.userReducer.user}
+}
+export default withRouter(connect(mapStateToProps, {setUser, logout})(App))

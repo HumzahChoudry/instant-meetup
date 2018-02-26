@@ -18,10 +18,12 @@
   display: inline;
   text-align: center;
 }
+
 .nav-links {
   margin-left: -150px;
   display: inline;
 }
+
 .nav-link {
   float: right;
 }

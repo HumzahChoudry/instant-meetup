@@ -1,9 +1,9 @@
 import React from "react"
 
-const Friend = () => {
+const Friend = (props) => {
   return (
   <div className="">
-    A friend!
+    {props.friend.first_name}
   </div>
   )
 }

@@ -5,7 +5,7 @@ class MapContainer extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="map-container">
         <Map coords={this.props.userCoords}/>
       </div>
     )

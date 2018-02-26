@@ -1,11 +1,11 @@
 import React from "react"
 
-const Meetup = () => {
+const Meetup = (props) => {
   return (
   <div className="">
-    A meetup!
+    {props.meetup.host_id}
   </div>
-  ) 
+  )
 }
 
 export default Meetup

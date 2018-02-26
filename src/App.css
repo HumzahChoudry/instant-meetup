@@ -26,3 +26,10 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.homepage {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}

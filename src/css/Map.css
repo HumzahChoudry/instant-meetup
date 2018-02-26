@@ -1,8 +1,15 @@
+.map-container {
+  grid-column: 2 / 6;
+  grid-row: 1 / 4;
+  padding-top: 10px;
+
+}
+
 .google-map {
   resize: both;
   grid-area: a;
-  width: 550px;
-  height: 300px;
+  width: 600px;
+  height: 500px;
   border-color: black;
   border-width: 1px;
   grid-column-start: 1;

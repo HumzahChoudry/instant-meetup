@@ -1,40 +1,48 @@
 import React from "react";
-import MapContainer from './MapContainer'
-import FriendsContainer from './FriendsContainer'
-import MeetupsContainer from './MeetupsContainer'
+import MapContainer from './map/MapContainer'
+import FriendsContainer from './friends/FriendsContainer'
+import MeetupsContainer from './meetups/MeetupsContainer'
+import {connect} from 'react-redux'
+import {Redirect} from 'react-router'
 
 
 
 
 class Homepage extends React.Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      user: {},
-      user_lat: null,
-      user_lon: null
-    }
-  }
 
-  componentWillMount(){
-      navigator.geolocation.getCurrentPosition(this.addLocationToState);
-  }
-
-  addLocationToState = (position) => {
-    this.setState({
-      user_lat: position.coords.latitude,
-      user_lon: position.coords.longitude
-    })
-  }
+  // componentWillMount(){
+  //     navigator.geolocation.getCurrentPosition(this.addLocationToState);
+  // }
+  //
+  // addLocationToState = (position) => {
+  //   //NEEDS TO BE A USER ACTION THAT POSTS TO THE DB AND UPDATES STATE
+  //   this.setState({
+  //     user_lat: position.coords.latitude,
+  //     user_lon: position.coords.longitude
+  //   })
+  // }
 
   render() {
     return (
       <div>
-        <MapContainer userCoords={[this.state.user_lat, this.state.user_lon]}/>
-        <FriendsContainer user={{id: 1, username: 'Humzah'}} />
-        <MeetupsContainer user={{id: 1, username: 'Humzah'}} />
+        Welcome {this.props.user.id ? this.props.user.username : "NO USER"}
+        {this.props.user.id ?
+          <div className="homepage">
+            <FriendsContainer />
+            <MapContainer />
+            <MeetupsContainer />
+          </div> :
+        <Redirect to="/login" />}
       </div>
     )
   }
+
+
 }
-export default Homepage
+
+const mapStateToProps = (state) => {
+  return {user: state.userReducer.user}
+}
+
+//could add map dispatch to props and create UPDATE USER LOCATION
+export default connect(mapStateToProps)(Homepage)
