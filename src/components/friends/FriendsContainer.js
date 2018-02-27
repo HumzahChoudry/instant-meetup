@@ -7,7 +7,6 @@ import { fetchFriends } from "../../actions";
 class FriendsContainer extends React.Component {
 
   componentDidMount() {
-    
      this.props.fetchFriends(this.props.user.id)
   }
 

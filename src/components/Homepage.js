@@ -2,6 +2,7 @@ import React from "react";
 import MapContainer from './map/MapContainer'
 import FriendsContainer from './friends/FriendsContainer'
 import MeetupsContainer from './meetups/MeetupsContainer'
+import { updateUserLocation } from '../actions'
 import {connect} from 'react-redux'
 import {Redirect} from 'react-router'
 
@@ -22,10 +23,18 @@ class Homepage extends React.Component {
   //   })
   // }
 
+  componentDidMount() {
+    // if (this.props.user.id) {
+    //   this.props.updateUserLocation(this.props.user)
+    // }
+  }
+
   render() {
     return (
       <div>
-        Welcome {this.props.user.id ? this.props.user.username : "NO USER"}
+        <p>Welcome {this.props.user.id ? this.props.user.username : "NO USER"}</p>
+        <p>lat: {this.props.user.latitude ? this.props.user.latitude : "NO LAT"}</p>
+        <p>lng: {this.props.user.longitude ? this.props.user.longitude : "NO LNG"}</p>
         {this.props.user.id ?
           <div className="homepage">
             <FriendsContainer />
@@ -45,4 +54,4 @@ const mapStateToProps = (state) => {
 }
 
 //could add map dispatch to props and create UPDATE USER LOCATION
-export default connect(mapStateToProps)(Homepage)
+export default connect(mapStateToProps, {updateUserLocation})(Homepage)

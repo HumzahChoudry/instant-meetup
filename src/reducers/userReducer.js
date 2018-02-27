@@ -39,6 +39,11 @@ export default function userReducer(
         ...state,
         user: {},
       }
+    case "UPDATE_USER_LOCATION":
+    return {
+      ...state,
+      user: {...state.user, ...action.payload}
+    }
     default:
       return state;
   }

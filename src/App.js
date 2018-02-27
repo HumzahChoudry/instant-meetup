@@ -14,13 +14,9 @@ import {withRouter} from 'react-router-dom'
 
 class App extends Component {
 
-  setLoggedInUser = (user) => {
-    localStorage.setItem('token', user.token)
-  }
-
-  componentDidMount() {
+  componentWillMount() {
     const token = localStorage.getItem('token');
-    if (token) {
+    if (token && token !== "undefined") {
       console.log("about to get current user");
       this.props.setUser()
     }
@@ -29,7 +25,6 @@ class App extends Component {
   removeLoggedInUser = () => {
    localStorage.removeItem('token')
    this.props.logout()
-   debugger
    window.history.pushState({}, null, "/login")
  }
 

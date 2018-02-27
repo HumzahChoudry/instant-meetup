@@ -18,14 +18,13 @@ export class RestfulAdapter {
     return fetch(`${baseUrl}/${route}/${id}`, getRequest()).then(res => res.json())
   }
   static createFetch(route, body) {
-    return fetch(`${baseUrl}/${route}`, postRequest(body)).then(
-      responseHandler
-    );
+    return fetch(`${baseUrl}/${route}`, postRequest(body))
+    .then(res => res.json());
   }
   static editFetch(route, id, body) {
-    return fetch(`${baseUrl}/${route}/${id}`, patchRequest(body)).then(
-      responseHandler
-    );
+    debugger
+    return fetch(`${baseUrl}/${route}/${id}`, patchRequest(body))
+    .then(res => res.json());
   }
   static deleteFetch(route, id) {
     return fetch(`${baseUrl}/${route}/${id}`, {

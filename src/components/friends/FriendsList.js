@@ -3,7 +3,7 @@ import Friend from './Friend'
 import { connect } from "react-redux";
 
 const FriendsList = (props) => {
-
+console.log("logging friends: ", props.friends);
 const friends = props.friends.map(friend => <Friend key={friend.id} friend={friend} />)
   return (
   <div className="friends-list">

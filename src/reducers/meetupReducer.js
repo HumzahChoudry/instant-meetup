@@ -3,11 +3,17 @@ export default function meetupReducer(
     myMeetups: [],
     publicMeetups: [],
     selectedMeetup: null,
-    loading: false
+    loading: false,
+    display: false
   },
   action
 ) {
   switch (action.type) {
+    case "ADD_NEW_MEETUP":
+      return {
+        ...state,
+        myMeetups: [...state.myMeetups, action.payload]
+      };
     case "MEETUPS_LOADING":
       return {
         ...state,
@@ -28,15 +34,19 @@ export default function meetupReducer(
     case "SELECT_MEETUP":
       return {
         ...state,
-        formData: action.payload
+        selectedMeetup: action.payload
       };
     case "UPDATE_MEETUP":
       return {
         ...state,
         formData: {...state.formData, ...action.payload}
       }
-    case "SET_MEETUPS":
-
+    case "DISPLAY_MEETUP":
+      return {
+        ...state,
+        display: true
+      };
+    case "SET_MEETUP":
       return {
         ...state,
         meetups: state.meetups.map(meetup => {

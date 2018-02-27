@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from 'react-router-dom';
 
 const Navbar = (props) => {
-  debugger
   return (
     <nav>
       <div className="nav-wrapper">
