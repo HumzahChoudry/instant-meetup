@@ -10,7 +10,7 @@ class Map extends Component {
 
   showMap = (friends, meetups) => {
     return <GoogleMapReact
-        apiKey={'AIzaSyCJWxC8L5mK9wrlkILVrNP3RmDT2yEXi6Y'}
+        bootstrapURLKeys={{key: 'AIzaSyCJWxC8L5mK9wrlkILVrNP3RmDT2yEXi6Y'}}
         center={{lat: 40.7128, lng: -74.0060}}
         defaultZoom={10} hoverDistance={100}>
         <MyLocation lat={this.props.user.latitude} lng={this.props.user.longitude} />

@@ -23,6 +23,7 @@ export function createMeetup(id) {
     dispatch({ type: "CREATING_MEETUP" })
     RestfulAdapter.createFetch('meetups', {user_id: id})
     .then(meetup => {
+      console.log(meetup);
       dispatch({type: "ADD_NEW_MEETUP", payload: meetup})
       dispatch({type: "SELECT_MEETUP", payload: meetup})
       dispatch({type: "DISPLAY_MEETUP", payload: meetup})
