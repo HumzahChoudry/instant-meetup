@@ -1,29 +1,53 @@
-import React, { Component } from 'react';
-import GoogleMapReact from 'google-map-react';
-import '../../css/Map.css';
-import MyLocation from './MyLocation'
+import React, { Component } from "react";
+import GoogleMapReact from "google-map-react";
+import "../../css/Map.css";
+import MyLocation from "./MyLocation";
 import { connect } from "react-redux";
-import FriendLocation from './FriendLocation'
-import MeetupLocation from './MeetupLocation'
+import FriendLocation from "./FriendLocation";
+import MeetupLocation from "./MeetupLocation";
+import SelectedMeetup from "./SelectedMeetup";
 
 class Map extends Component {
-
   showMap = (friends, meetups) => {
-    return <GoogleMapReact
-        bootstrapURLKeys={{key: 'AIzaSyCJWxC8L5mK9wrlkILVrNP3RmDT2yEXi6Y'}}
-        center={{lat: 40.7128, lng: -74.0060}}
-        defaultZoom={10} hoverDistance={100}>
-        <MyLocation lat={this.props.user.latitude} lng={this.props.user.longitude} />
-        {friends}
+    return (
+      <GoogleMapReact
+        bootstrapURLKeys={{ key: "AIzaSyCJWxC8L5mK9wrlkILVrNP3RmDT2yEXi6Y" }}
+        center={
+          !this.props.display
+            ? {
+                lat: this.props.user.latitude,
+                lng: this.props.user.longitude
+              }
+            : {
+                lat: this.props.selectedMeetup.location.lat,
+                lng: this.props.selectedMeetup.location.lng
+              }
+        }
+        defaultZoom={10}
+        zoom={!this.props.display ? 10 : 15}
+        hoverDistance={100}
+      >
+        <MyLocation
+          lat={this.props.user.latitude}
+          lng={this.props.user.longitude}
+        />
+        {this.props.display ? (
+          <SelectedMeetup
+            key={this.props.selectedMeetup.location.id}
+            lat={this.props.selectedMeetup.location.lat}
+            lng={this.props.selectedMeetup.location.lng}
+          />
+        ) : (
+          friends
+        )}
       </GoogleMapReact>
-  }
+    );
+  };
 
   render() {
-    let friends = this.props.friends.map(friend =>    <FriendLocation key={friend.id} lat={friend.current_latitude} lng={friend.current_longitude} />)
-    let meetups = this.props.myMeetups.map((meetup, index) =>
-    <MeetupLocation key={meetup.id} lat={(40.75 + (index/100))} lng={-74} />)
-
-    let map = this.showMap(friends, meetups)
+    let friends = this.createFriendMarkers();
+    let meetups = this.createMeetupMarkers();
+    let map = this.showMap(friends, meetups);
 
     return (
       <div className="google-map item" position="relative">
@@ -32,17 +56,32 @@ class Map extends Component {
     );
   }
 
-  componentWillMount(){
-    let map = <div></div>
+  componentWillMount() {}
+
+  createFriendMarkers() {
+    return this.props.friends.map(friend => (
+      <FriendLocation
+        key={friend.id}
+        lat={friend.current_latitude}
+        lng={friend.current_longitude}
+      />
+    ));
+  }
+  createMeetupMarkers() {
+    return this.props.myMeetups.map((meetup, index) => (
+      <MeetupLocation key={meetup.id} lat={40.75 + index / 100} lng={-74} />
+    ));
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     user: state.userReducer.user,
     myMeetups: state.meetupReducer.myMeetups,
     allMeetups: state.meetupReducer.allMeetups,
+    selectedMeetup: state.meetupReducer.selectedMeetup,
+    display: state.meetupReducer.display,
     friends: state.friendsReducer.friends
-  }
-}
-export default connect(mapStateToProps)(Map)
+  };
+};
+export default connect(mapStateToProps)(Map);

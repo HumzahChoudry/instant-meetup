@@ -2,7 +2,6 @@
   grid-column: 2 / 6;
   grid-row: 1 / 4;
   padding-top: 10px;
-
 }
 
 .google-map {
@@ -15,4 +14,20 @@
   grid-column-start: 1;
   grid-row-start: 1;
   margin: 0 auto;
+}
+
+.me {
+  transform: translateX(-50%) translateY(-100%);
+}
+
+.friend-location {
+  transform: translateX(-50%) translateY(-100%);
+}
+
+.meetup-location {
+  transform: translateX(-50%) translateY(-100%);
+}
+
+.selected-meetup {
+  transform: translateX(-50%) translateY(-100%);
 }
