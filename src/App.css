@@ -33,7 +33,7 @@
 
 .homepage {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: 0.5fr repeat(5, 1fr) 0.5fr;
   grid-gap: 10px;
   grid-auto-rows: minmax(100px, auto);
 }

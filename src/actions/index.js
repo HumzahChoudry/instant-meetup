@@ -12,6 +12,7 @@ export function fetchMeetups(id) {
   return dispatch => {
     dispatch({ type: "MEETUPS_LOADING" });
     RestfulAdapter.showFetch(`meetups`, id).then(data => {
+      debugger;
       dispatch({ type: "MY_MEETUPS_LOAD", payload: data });
     });
   };
@@ -21,7 +22,6 @@ export function createMeetup(id) {
   return dispatch => {
     dispatch({ type: "CREATING_MEETUP" });
     RestfulAdapter.createFetch("meetups", { user_id: id }).then(meetup => {
-      console.log(meetup);
       dispatch({ type: "ADD_NEW_MEETUP", payload: meetup });
       dispatch({ type: "SELECT_MEETUP", payload: meetup });
       dispatch({ type: "DISPLAY_MEETUP", payload: meetup });
@@ -35,7 +35,6 @@ export function login(loginInfo) {
       username: loginInfo.username,
       password: loginInfo.password
     }).then(json => {
-      debugger;
       if (json.error) {
         alert(json.error);
       } else {

@@ -1,30 +1,32 @@
-const rootUrl = 'http://localhost:3000'
+const rootUrl = "http://localhost:3000";
 const baseUrl = `${rootUrl}/api/v1`;
-const token = localStorage.getItem('token')
+const token = localStorage.getItem("token");
 function headers() {
   return {
     "Content-Type": "application/json",
-    'Accept': "application/json",
-    'Authorization': token
+    Accept: "application/json",
+    Authorization: token
   };
 }
 
 export class RestfulAdapter {
-
   static indexFetch(route) {
     return fetch(`${baseUrl}/${route}`, getRequest()).then(responseHandler);
   }
   static showFetch(route, id) {
-    return fetch(`${baseUrl}/${route}/${id}`, getRequest()).then(res => res.json())
+    return fetch(`${baseUrl}/${route}/${id}`, getRequest()).then(res =>
+      res.json()
+    );
   }
   static createFetch(route, body) {
-    return fetch(`${baseUrl}/${route}`, postRequest(body))
-    .then(res => res.json());
+    return fetch(`${baseUrl}/${route}`, postRequest(body)).then(res =>
+      res.json()
+    );
   }
   static editFetch(route, id, body) {
-    debugger
-    return fetch(`${baseUrl}/${route}/${id}`, patchRequest(body))
-    .then(res => res.json());
+    return fetch(`${baseUrl}/${route}/${id}`, patchRequest(body)).then(res =>
+      res.json()
+    );
   }
   static deleteFetch(route, id) {
     return fetch(`${baseUrl}/${route}/${id}`, {
@@ -35,15 +37,16 @@ export class RestfulAdapter {
 
   //USER FETCHES
   static login(route, body) {
-    return fetch(`${rootUrl}/${route}`, postRequest(body))
-    .then(res => res.json())
+    return fetch(`${rootUrl}/${route}`, postRequest(body)).then(res =>
+      res.json()
+    );
   }
 
-  static getLoggedInUser = (route) => {
+  static getLoggedInUser = route => {
     return fetch(`${rootUrl}/${route}`, {
       headers: headers()
-    }).then(res => res.json())
-  }
+    }).then(res => res.json());
+  };
 }
 
 //HELPER FUNCTIONS
@@ -74,7 +77,6 @@ function postRequest(body) {
 function responseHandler(response) {
   return response => {
     if (response.ok) {
-      console.log("json response from fetch:", response.json())
       return response.json();
     } else {
       console.log("ERROR", response.json());
