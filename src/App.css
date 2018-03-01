@@ -38,10 +38,10 @@
   grid-auto-rows: minmax(100px, auto);
 }
 
-.hover-display {
-  transition: display 1s;
+.hover-display > img {
+  display: inline;
 }
 
-.hover-display:hover {
+/* .hover-display:hover {
   display: block;
-}
+} */
