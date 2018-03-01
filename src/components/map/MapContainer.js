@@ -2,7 +2,7 @@ import React from "react";
 import Map from "./Map";
 import MeetupDisplay from "./MeetupDisplay";
 import { connect } from "react-redux";
-import { createMeetup } from "../../actions";
+import { createMeetup, removeMeetupDisplay } from "../../actions";
 
 class MapContainer extends React.Component {
   render() {
@@ -10,7 +10,10 @@ class MapContainer extends React.Component {
       <div className="map-container">
         <Map />
         {this.props.display ? (
-          <MeetupDisplay meetup={this.props.selectedMeetup} />
+          <MeetupDisplay
+            meetup={this.props.selectedMeetup}
+            closeModal={this.props.removeMeetupDisplay}
+          />
         ) : (
           <button onClick={this.handleClick}>Create hangout Session!</button>
         )}
@@ -30,5 +33,5 @@ export default connect(
     selectedMeetup: state.meetupReducer.selectedMeetup,
     display: state.meetupReducer.display
   }),
-  { createMeetup }
+  { createMeetup, removeMeetupDisplay }
 )(MapContainer);

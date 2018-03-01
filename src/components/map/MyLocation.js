@@ -1,6 +1,7 @@
 import React from "react";
 
-const MyLocation = () => {
+const MyLocation = props => {
+  console.log(props);
   return (
     <div className="me">
       <img

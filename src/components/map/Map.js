@@ -13,7 +13,7 @@ class Map extends Component {
       <GoogleMapReact
         bootstrapURLKeys={{ key: "AIzaSyCJWxC8L5mK9wrlkILVrNP3RmDT2yEXi6Y" }}
         center={
-          !this.props.display
+          !this.props.selectedMeetup
             ? {
                 lat: this.props.user.latitude,
                 lng: this.props.user.longitude
@@ -24,14 +24,14 @@ class Map extends Component {
               }
         }
         defaultZoom={10}
-        zoom={!this.props.display ? 10 : 15}
-        hoverDistance={100}
+        zoom={!this.props.selectedMeetup ? 10 : 15}
+        hoverDistance={15}
       >
         <MyLocation
           lat={this.props.user.latitude}
           lng={this.props.user.longitude}
         />
-        {this.props.display ? (
+        {this.props.selectedMeetup ? (
           <SelectedMeetup
             key={this.props.selectedMeetup.location.id}
             lat={this.props.selectedMeetup.location.lat}
@@ -56,11 +56,10 @@ class Map extends Component {
     );
   }
 
-  componentWillMount() {}
-
   createFriendMarkers() {
     return this.props.friends.map(friend => (
       <FriendLocation
+        friend={friend}
         key={friend.id}
         lat={friend.current_latitude}
         lng={friend.current_longitude}
