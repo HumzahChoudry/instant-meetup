@@ -9,7 +9,7 @@ function headers() {
   };
 }
 
-export class RestfulAdapter {
+export default class RestfulAdapter {
   static indexFetch(route) {
     return fetch(`${baseUrl}/${route}`, getRequest()).then(responseHandler);
   }

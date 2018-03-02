@@ -1,5 +1,6 @@
 import React from "react";
-import { Popup, Card, Image } from "semantic-ui-react";
+import { Popup, Image } from "semantic-ui-react";
+import FriendMarker from "./FriendMarker";
 
 const FriendLocation = props => {
   let hoverDisplay;
@@ -11,18 +12,35 @@ const FriendLocation = props => {
 
   return (
     <div className="friend-location">
-      <Image src="http://www.pngall.com/wp-content/uploads/2017/05/Map-Marker-PNG-Pic.png" />
+      <img
+        src="http://www.pngall.com/wp-content/uploads/2017/05/Map-Marker-PNG-Pic.png"
+        alt="You friend is here"
+        height="20"
+        width="15"
+      />
+      <div className="hover-display" style={{ display: hoverDisplay }}>
+        <img src={props.friend.profile_pic} />
+        <span>Hello</span>
+      </div>
     </div>
   );
 };
 
-const x = () => {
-  return (
-    <Popup trigger={FriendLocation}>
-      <Popup.Header>Friend Name</Popup.Header>
-      <Popup.Content />
-    </Popup>
-  );
-};
+// debugger;
+// return (
+//   <Popup
+//     trigger={
+//       <div>
+//         <img
+//           width="50"
+//           height="50"
+//           src="http://www.pngall.com/wp-content/uploads/2017/05/Map-Marker-PNG-Pic.png"
+//         />
+//       </div>
+//     }
+//   >
+//     <Popup.Header>Friend Name</Popup.Header>
+//     <Popup.Content />
+//   </Popup>
 
 export default FriendLocation;

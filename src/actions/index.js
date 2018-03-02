@@ -1,4 +1,4 @@
-import { RestfulAdapter } from "../adapters";
+import RestfulAdapter from "../adapters";
 
 export function fetchFriends(id) {
   return dispatch => {
@@ -52,7 +52,6 @@ export function setUser() {
   return dispatch => {
     RestfulAdapter.getLoggedInUser("get_current_user").then(hash => {
       if (hash) {
-        console.log("Your token returned: ", hash);
         dispatch({ type: "SET_USER", user: hash.user, token: hash.token });
       } else {
         console.log("token returned null, render login page");
