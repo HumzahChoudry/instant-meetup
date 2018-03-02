@@ -12,7 +12,6 @@ export function fetchMeetups(id) {
   return dispatch => {
     dispatch({ type: "MEETUPS_LOADING" });
     RestfulAdapter.showFetch(`meetups`, id).then(data => {
-      debugger;
       dispatch({ type: "MY_MEETUPS_LOAD", payload: data });
     });
   };
