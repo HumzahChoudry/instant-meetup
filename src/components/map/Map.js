@@ -9,6 +9,7 @@ import SelectedMeetup from "./SelectedMeetup";
 
 class Map extends Component {
   showMap = (friends, meetups) => {
+    console.log(this.props.selectedMeetup);
     return (
       <GoogleMapReact
         bootstrapURLKeys={{ key: "AIzaSyCJWxC8L5mK9wrlkILVrNP3RmDT2yEXi6Y" }}
