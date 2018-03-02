@@ -1,7 +1,7 @@
 export default function friendReducer(
   state = {
     friends: [],
-    selectedFriend: null,
+    selectedFriends: [],
     loading: false
   },
   action
@@ -11,7 +11,7 @@ export default function friendReducer(
       return {
         ...state,
         loading: true
-      }
+      };
     case "FRIENDS_LOAD":
       return {
         ...state,
@@ -19,27 +19,42 @@ export default function friendReducer(
         loading: false
       };
     case "SELECT_FRIEND":
-      return {
-        ...state,
-        formData: action.payload
-      };
+      if (!state.selectedFriends.includes(action.payload)) {
+        return {
+          ...state,
+          selectedFriends: state.selectedFriends.concat(action.payload)
+        };
+      }
+    case "DESELECT_FRIEND":
+      if (state.selectedFriends.includes(action.payload)) {
+        const something = state.selectedFriends;
+        const index = something.indexOf(action.payload);
+        const x = something.splice(index, 1);
+        console.log("reducer", something);
+        // return {
+        //   ...state,
+        //   selectedFriends: something
+        // };
+        return Object.assign({}, state, {
+          selectedFriends: [...something]
+        });
+      }
     case "UPDATE_FRIEND":
       return {
         ...state,
-        formData: {...state.formData, ...action.payload}
-      }
+        formData: { ...state.formData, ...action.payload }
+      };
     case "SET_FRIENDS":
-
       return {
         ...state,
         friends: state.friends.map(friend => {
-          if(friend.id === action.payload.id) {
-            return action.payload
+          if (friend.id === action.payload.id) {
+            return action.payload;
           } else {
-            return friend
+            return friend;
           }
         })
-      }
+      };
     default:
       return state;
   }

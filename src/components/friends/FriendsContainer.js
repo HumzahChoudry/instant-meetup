@@ -1,7 +1,7 @@
 import React from "react";
 import FriendsList from "./FriendsList";
 import { connect } from "react-redux";
-import { fetchFriends } from "../../actions";
+import { fetchFriends, selectFriend, deselectFriend } from "../../actions";
 
 class FriendsContainer extends React.Component {
   componentDidMount() {
@@ -11,16 +11,25 @@ class FriendsContainer extends React.Component {
   render() {
     return (
       <div className="friends-container">
-        <FriendsList />
+        <FriendsList handleOnClick={this.selectOrDeselectFriend} />
       </div>
     );
   }
+
+  selectOrDeselectFriend = friend => {
+    if (this.props.selectedFriends.includes(friend)) {
+      this.props.deselectFriend(friend);
+    } else {
+      this.props.selectFriend(friend);
+    }
+  };
 }
 
 export default connect(
   state => ({
     user: state.userReducer.user,
-    friends: state.friendsReducer.friends
+    friends: state.friendsReducer.friends,
+    selectedFriends: state.friendsReducer.selectedFriends
   }),
-  { fetchFriends }
+  { fetchFriends, selectFriend, deselectFriend }
 )(FriendsContainer);

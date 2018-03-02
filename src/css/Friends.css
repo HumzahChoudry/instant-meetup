@@ -3,7 +3,8 @@
   padding-top: 10px;
 }
 
-.friend-card {
+.selected {
+  background-color: red;
 }
 
 .friend-card-image {

@@ -42,7 +42,6 @@ export function login(loginInfo) {
     });
   };
 }
-
 export function logout() {
   return dispatch => {
     dispatch({ type: "REMOVE_USER" });
@@ -79,4 +78,16 @@ export function removeMeetupDisplay() {
 
 export function updateLoginForm(loginFormData) {
   return { type: "UPDATE_LOGIN_FORM", payload: loginFormData };
+}
+
+export function selectFriend(friend) {
+  return dispatch => {
+    dispatch({ type: "SELECT_FRIEND", payload: friend });
+  };
+}
+
+export function deselectFriend(friend) {
+  return dispatch => {
+    dispatch({ type: "DESELECT_FRIEND", payload: friend });
+  };
 }
