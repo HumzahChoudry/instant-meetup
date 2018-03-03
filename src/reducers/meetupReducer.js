@@ -1,6 +1,6 @@
 export default function meetupReducer(
   state = {
-    myMeetups: [],
+    meetups: [],
     publicMeetups: [],
     selectedMeetup: null,
     loading: false,
@@ -12,23 +12,17 @@ export default function meetupReducer(
     case "ADD_NEW_MEETUP":
       return {
         ...state,
-        myMeetups: [...state.myMeetups, action.payload]
+        meetups: [...state.meetups, action.payload]
       };
     case "MEETUPS_LOADING":
       return {
         ...state,
         loading: true
       };
-    case "MY_MEETUPS_LOAD":
+    case "MEETUPS_LOAD":
       return {
         ...state,
-        myMeetups: action.payload,
-        loading: false
-      };
-    case "ALL_MEETUPS_LOAD":
-      return {
-        ...state,
-        allMeetups: action.payload,
+        meetups: action.payload,
         loading: false
       };
     case "SELECT_MEETUP":

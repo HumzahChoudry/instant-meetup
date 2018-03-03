@@ -1,7 +1,7 @@
 import React from "react";
 import MeetupsList from "./MeetupsList";
 import { connect } from "react-redux";
-import { fetchMeetups } from "../../actions";
+import { fetchMeetups, selectAndDisplayMeetup } from "../../actions";
 
 class MeetupsContainer extends React.Component {
   componentDidMount() {
@@ -11,16 +11,20 @@ class MeetupsContainer extends React.Component {
   render() {
     return (
       <div className="meetups-container">
-        <MeetupsList />
+        <MeetupsList onClick={this.handleOnClick} />
       </div>
     );
   }
+
+  handleOnClick = meetup => {
+    this.props.selectAndDisplayMeetup(meetup);
+  };
 }
 
 export default connect(
   state => ({
     user: state.userReducer.user,
-    myMeetups: state.meetupReducer.myMeetups
+    meetups: state.meetupReducer.meetups
   }),
-  { fetchMeetups }
+  { fetchMeetups, selectAndDisplayMeetup }
 )(MeetupsContainer);

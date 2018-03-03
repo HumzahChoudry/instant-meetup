@@ -12,23 +12,31 @@ export function fetchMeetups(id) {
   return dispatch => {
     dispatch({ type: "MEETUPS_LOADING" });
     RestfulAdapter.showFetch(`meetups`, id).then(data => {
-      dispatch({ type: "MY_MEETUPS_LOAD", payload: data });
+      dispatch({ type: "MEETUPS_LOAD", payload: data });
     });
   };
 }
 
-export function createMeetup(id, selectedFriends) {
+export function createMeetup(id, selectedFriends, pub, keyword) {
   return dispatch => {
     dispatch({ type: "CREATING_MEETUP" });
     RestfulAdapter.createFetch("meetups", {
       user_id: id,
-      selectedFriends: selectedFriends
+      selectedFriends: selectedFriends,
+      public: pub,
+      keyword: keyword
     }).then(meetup => {
-      console.log("returned meetup", meetup);
       dispatch({ type: "ADD_NEW_MEETUP", payload: meetup });
       dispatch({ type: "SELECT_MEETUP", payload: meetup });
       dispatch({ type: "DISPLAY_MEETUP", payload: meetup });
     });
+  };
+}
+
+export function selectAndDisplayMeetup(meetup) {
+  return dispatch => {
+    dispatch({ type: "SELECT_MEETUP", payload: meetup });
+    dispatch({ type: "DISPLAY_MEETUP", payload: meetup });
   };
 }
 
@@ -89,7 +97,6 @@ export function selectFriend(friend) {
     dispatch({ type: "SELECT_FRIEND", payload: friend });
   };
 }
-
 export function deselectFriend(friend) {
   return dispatch => {
     dispatch({ type: "DESELECT_FRIEND", payload: friend });

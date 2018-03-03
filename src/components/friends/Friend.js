@@ -3,10 +3,6 @@ import { connect } from "react-redux";
 import { Card, Image } from "semantic-ui-react";
 
 class Friend extends React.Component {
-  componentDidUpdate() {
-    console.log("updating");
-  }
-
   render() {
     let num = Math.floor(Math.random() * 10);
     let selectedDisplay = "";
@@ -48,7 +44,6 @@ class Friend extends React.Component {
 // </div>
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     selectedFriends: state.friendsReducer.selectedFriends
   };

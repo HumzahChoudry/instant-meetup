@@ -10,7 +10,6 @@ import { selectFriend, deselectFriend } from "../../actions";
 
 class Map extends Component {
   showMap = (friends, meetups) => {
-    console.log(this.props.selectedMeetup);
     return (
       <GoogleMapReact
         bootstrapURLKeys={{ key: "AIzaSyCJWxC8L5mK9wrlkILVrNP3RmDT2yEXi6Y" }}
@@ -70,7 +69,7 @@ class Map extends Component {
     ));
   }
   createMeetupMarkers() {
-    return this.props.myMeetups.map((meetup, index) => (
+    return this.props.meetups.map((meetup, index) => (
       <MeetupLocation key={meetup.id} lat={40.75 + index / 100} lng={-74} />
     ));
   }
@@ -87,8 +86,8 @@ class Map extends Component {
 const mapStateToProps = state => {
   return {
     user: state.userReducer.user,
-    myMeetups: state.meetupReducer.myMeetups,
-    allMeetups: state.meetupReducer.allMeetups,
+    meetups: state.meetupReducer.meetups,
+    publicMeetups: state.meetupReducer.publicMeetups,
     selectedMeetup: state.meetupReducer.selectedMeetup,
     display: state.meetupReducer.display,
     friends: state.friendsReducer.friends,

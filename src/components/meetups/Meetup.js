@@ -1,10 +1,10 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Card, Icon, Image } from "semantic-ui-react";
 
 const Meetup = props => {
-  console.log(props.meetup);
   return (
-    <Card>
+    <Card onClick={() => props.onClick(props.meetup)}>
       <Image src={props.meetup.location.photo} />
       <Card.Content>
         <Card.Header>{props.meetup.location.name}</Card.Header>
@@ -21,4 +21,9 @@ const Meetup = props => {
   );
 };
 
-export default Meetup;
+export default connect(state => ({
+  meetups: state.meetupReducer.meetups,
+  publicMeetups: state.meetupReducer.publicMeetups,
+  selectedMeetup: state.meetupReducer.selectedMeetup,
+  display: state.meetupReducer.display
+}))(Meetup);

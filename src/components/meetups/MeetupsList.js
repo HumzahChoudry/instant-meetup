@@ -3,16 +3,16 @@ import Meetup from "./Meetup";
 import { connect } from "react-redux";
 
 const MeetupsList = props => {
-  const myMeetups = props.myMeetups.map(meetup => (
-    <Meetup key={meetup.id} meetup={meetup} />
+  const meetups = props.meetups.map(meetup => (
+    <Meetup key={meetup.id} meetup={meetup} onClick={props.onClick} />
   ));
 
-  return <div className="meetup-list">{myMeetups}</div>;
+  return <div className="meetup-list">{meetups}</div>;
 };
 
 const mapStateToProps = state => {
   return {
-    myMeetups: state.meetupReducer.myMeetups,
+    meetups: state.meetupReducer.meetups,
     publicMeetups: state.meetupReducer.publicMeetups
   };
 };

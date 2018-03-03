@@ -1,6 +1,7 @@
 import React from "react";
 import Map from "./Map";
 import MeetupDisplay from "./MeetupDisplay";
+import CreateMeetup from "./CreateMeetup";
 import { connect } from "react-redux";
 import { createMeetup, removeMeetupDisplay } from "../../actions";
 
@@ -15,14 +16,21 @@ class MapContainer extends React.Component {
             closeModal={this.props.removeMeetupDisplay}
           />
         ) : (
-          <button onClick={this.handleClick}>Create hangout Session!</button>
+          <CreateMeetup onClick={this.handleClick} />
         )}
       </div>
     );
   }
 
-  handleClick = () => {
-    this.props.createMeetup(this.props.user.id, this.props.selectedFriends);
+  handleClick = e => {
+    let checked = e.target.parentElement.childNodes[2].checked;
+    let keyword = e.target.parentElement.childNodes[3].value;
+    this.props.createMeetup(
+      this.props.user.id,
+      this.props.selectedFriends,
+      checked,
+      keyword
+    );
   };
 }
 
