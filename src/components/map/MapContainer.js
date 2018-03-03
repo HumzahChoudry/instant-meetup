@@ -14,6 +14,7 @@ class MapContainer extends React.Component {
           <MeetupDisplay
             meetup={this.props.selectedMeetup}
             closeModal={this.props.removeMeetupDisplay}
+            user={this.props.user}
           />
         ) : (
           <CreateMeetup onClick={this.handleClick} />

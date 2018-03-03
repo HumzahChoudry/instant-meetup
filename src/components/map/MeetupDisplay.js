@@ -6,6 +6,8 @@ const MeetupDisplay = props => {
     props.meetup.location.lng
   }`;
   let restaurantLink = `https://www.google.com/maps/place/${restaurantName}/{restarestaurantLocation}z/`;
+  let inMeetup = props.meetup.users.filter(user => user.id === props.user.id)
+    .length;
   return (
     <div className="meetup-display ">
       <span className="close" onClick={props.closeModal}>
@@ -22,6 +24,7 @@ const MeetupDisplay = props => {
         <p>
           Hosted by: {props.meetup.host.first_name}{" "}
           {props.meetup.host.last_name}
+          {inMeetup < 1 ? <button>Join!</button> : <p>You're attending!</p>}
         </p>
         <img id="display-image" src={props.meetup.location.photo} />
       </div>
