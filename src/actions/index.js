@@ -17,10 +17,14 @@ export function fetchMeetups(id) {
   };
 }
 
-export function createMeetup(id) {
+export function createMeetup(id, selectedFriends) {
   return dispatch => {
     dispatch({ type: "CREATING_MEETUP" });
-    RestfulAdapter.createFetch("meetups", { user_id: id }).then(meetup => {
+    RestfulAdapter.createFetch("meetups", {
+      user_id: id,
+      selectedFriends: selectedFriends
+    }).then(meetup => {
+      console.log("returned meetup", meetup);
       dispatch({ type: "ADD_NEW_MEETUP", payload: meetup });
       dispatch({ type: "SELECT_MEETUP", payload: meetup });
       dispatch({ type: "DISPLAY_MEETUP", payload: meetup });

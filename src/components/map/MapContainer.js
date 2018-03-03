@@ -22,7 +22,7 @@ class MapContainer extends React.Component {
   }
 
   handleClick = () => {
-    this.props.createMeetup(this.props.user.id);
+    this.props.createMeetup(this.props.user.id, this.props.selectedFriends);
   };
 }
 
@@ -30,6 +30,7 @@ export default connect(
   state => ({
     user: state.userReducer.user,
     friends: state.friendsReducer.friends,
+    selectedFriends: state.friendsReducer.selectedFriends,
     selectedMeetup: state.meetupReducer.selectedMeetup,
     display: state.meetupReducer.display
   }),

@@ -2,6 +2,7 @@ import React from "react";
 import { Card, Icon, Image } from "semantic-ui-react";
 
 const Meetup = props => {
+  console.log(props.meetup);
   return (
     <Card>
       <Image src={props.meetup.location.photo} />
