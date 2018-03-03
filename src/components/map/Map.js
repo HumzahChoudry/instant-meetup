@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import FriendLocation from "./FriendLocation";
 import MeetupLocation from "./MeetupLocation";
 import SelectedMeetup from "./SelectedMeetup";
+import { selectFriend, deselectFriend } from "../../actions";
 
 class Map extends Component {
   showMap = (friends, meetups) => {
@@ -64,6 +65,7 @@ class Map extends Component {
         key={friend.id}
         lat={friend.current_latitude}
         lng={friend.current_longitude}
+        onClick={this.selectOrDeselectFriend}
       />
     ));
   }
@@ -72,6 +74,14 @@ class Map extends Component {
       <MeetupLocation key={meetup.id} lat={40.75 + index / 100} lng={-74} />
     ));
   }
+
+  selectOrDeselectFriend = friend => {
+    if (this.props.selectedFriends.includes(friend)) {
+      this.props.deselectFriend(friend);
+    } else {
+      this.props.selectFriend(friend);
+    }
+  };
 }
 
 const mapStateToProps = state => {
@@ -81,7 +91,8 @@ const mapStateToProps = state => {
     allMeetups: state.meetupReducer.allMeetups,
     selectedMeetup: state.meetupReducer.selectedMeetup,
     display: state.meetupReducer.display,
-    friends: state.friendsReducer.friends
+    friends: state.friendsReducer.friends,
+    selectedFriends: state.friendsReducer.selectedFriends
   };
 };
-export default connect(mapStateToProps)(Map);
+export default connect(mapStateToProps, { selectFriend, deselectFriend })(Map);

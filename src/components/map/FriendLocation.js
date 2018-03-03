@@ -11,7 +11,10 @@ const FriendLocation = props => {
   }
 
   return (
-    <div className="friend-location">
+    <div
+      className="friend-location"
+      onClick={() => props.onClick(props.friend)}
+    >
       <img
         src="http://www.pngall.com/wp-content/uploads/2017/05/Map-Marker-PNG-Pic.png"
         alt="You friend is here"

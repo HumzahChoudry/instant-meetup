@@ -14,7 +14,6 @@ class Friend extends React.Component {
     if (this.props.selectedFriends.includes(this.props.friend)) {
       selectedDisplay = "green";
     }
-    console.log("selected friends", this.props.selectedFriends);
     return (
       <Card
         color={selectedDisplay}
