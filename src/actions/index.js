@@ -32,6 +32,16 @@ export function createMeetup(id, selectedFriends, pub, keyword) {
     });
   };
 }
+export function updateMeetupUsers(meetup) {
+  return dispatch => {
+    RestfulAdapter.editFetch("meetups", meetup.id, {
+      users: meetup.users
+    }).then(meetup => {
+      console.log(meetup);
+      dispatch({ type: "UPDATE_MEETUP", payload: meetup });
+    });
+  };
+}
 
 export function selectAndDisplayMeetup(meetup) {
   return dispatch => {
@@ -85,6 +95,12 @@ export function updateUserLocation(user) {
 export function removeMeetupDisplay() {
   return dispatch => {
     dispatch({ type: "REMOVE_MEETUP_DISPLAY" });
+  };
+}
+
+export function unselectMeetup() {
+  return dispatch => {
+    dispatch({ type: "UNSELECT_MEETUP" });
   };
 }
 

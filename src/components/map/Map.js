@@ -24,8 +24,8 @@ class Map extends Component {
                 lng: this.props.selectedMeetup.location.lng
               }
         }
-        defaultZoom={10}
-        zoom={!this.props.selectedMeetup ? 10 : 15}
+        defaultZoom={12}
+        zoom={!this.props.selectedMeetup ? 12 : 15}
         hoverDistance={15}
       >
         <MyLocation

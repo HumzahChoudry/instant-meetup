@@ -30,10 +30,15 @@ export default function meetupReducer(
         ...state,
         selectedMeetup: action.payload
       };
+    case "UNSELECT_MEETUP":
+      return {
+        ...state,
+        selectedMeetup: null
+      };
     case "UPDATE_MEETUP":
       return {
         ...state,
-        formData: { ...state.formData, ...action.payload }
+        meetup: { ...state.meetups, ...action.payload }
       };
     case "DISPLAY_MEETUP":
       return {

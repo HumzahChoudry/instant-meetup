@@ -30,11 +30,7 @@ export default function friendReducer(
         const something = state.selectedFriends;
         const index = something.indexOf(action.payload);
         const x = something.splice(index, 1);
-        console.log("reducer", something);
-        // return {
-        //   ...state,
-        //   selectedFriends: something
-        // };
+
         return Object.assign({}, state, {
           selectedFriends: [...something]
         });

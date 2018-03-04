@@ -24,7 +24,20 @@ const MeetupDisplay = props => {
         <p>
           Hosted by: {props.meetup.host.first_name}{" "}
           {props.meetup.host.last_name}
-          {inMeetup < 1 ? <button>Join!</button> : <p>You're attending!</p>}
+          {inMeetup < 1 ? (
+            <button onClick={e => props.addUserToMeetup(e, props.meetup)}>
+              Join!
+            </button>
+          ) : (
+            <p>
+              You're attending!{" "}
+              <button
+                onClick={e => props.removeUserFromMeetup(e, props.meetup)}
+              >
+                Leave
+              </button>
+            </p>
+          )}
         </p>
         <img id="display-image" src={props.meetup.location.photo} />
       </div>
