@@ -36,7 +36,7 @@ export default class RestfulAdapter {
   }
 
   //USER FETCHES
-  static login(route, body) {
+  static authPost(route, body) {
     return fetch(`${rootUrl}/${route}`, postRequest(body)).then(res =>
       res.json()
     );

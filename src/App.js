@@ -6,6 +6,7 @@ import "./css/Meetups.css";
 import Navbar from "./components/Navbar";
 import { Route, Switch, Redirect, withRouter } from "react-router-dom";
 import Homepage from "./components/Homepage";
+import Signup from "./components/Signup";
 import LoginPage from "./components/LoginPage";
 import { RestfulAdapter } from "./adapters";
 import { connect } from "react-redux";
@@ -15,7 +16,6 @@ class App extends Component {
   componentWillMount() {
     const token = localStorage.getItem("token");
     if (token && token !== "undefined") {
-      console.log("about to get current user");
       this.props.setUser();
     }
   }
@@ -33,6 +33,7 @@ class App extends Component {
         <Switch>
           <Route path="/home" component={Homepage} />
           <Route path="/login" component={LoginPage} />
+          <Route path="/signup" component={Signup} />
           <Redirect from="/" to="/home" />
         </Switch>
       </div>

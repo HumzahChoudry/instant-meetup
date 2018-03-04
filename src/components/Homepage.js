@@ -2,30 +2,12 @@ import React from "react";
 import MapContainer from "./map/MapContainer";
 import FriendsContainer from "./friends/FriendsContainer";
 import MeetupsContainer from "./meetups/MeetupsContainer";
-import { updateUserLocation } from "../actions";
 import { connect } from "react-redux";
 import { Redirect } from "react-router";
 
 class Homepage extends React.Component {
-  // componentWillMount(){
-  //     navigator.geolocation.getCurrentPosition(this.addLocationToState);
-  // }
-  //
-  // addLocationToState = (position) => {
-  //   //NEEDS TO BE A USER ACTION THAT POSTS TO THE DB AND UPDATES STATE
-  //   this.setState({
-  //     user_lat: position.coords.latitude,
-  //     user_lon: position.coords.longitude
-  //   })
-  // }
-
-  componentDidMount() {
-    // if (this.props.user.id) {
-    //   this.props.updateUserLocation(this.props.user)
-    // }
-  }
-
   render() {
+    console.log("rendering homepage", this.props.user);
     return (
       <div>
         <p>
@@ -57,4 +39,4 @@ const mapStateToProps = state => {
 };
 
 //could add map dispatch to props and create UPDATE USER LOCATION
-export default connect(mapStateToProps, { updateUserLocation })(Homepage);
+export default connect(mapStateToProps)(Homepage);

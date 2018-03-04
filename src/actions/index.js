@@ -49,13 +49,30 @@ export function selectAndDisplayMeetup(meetup) {
     dispatch({ type: "DISPLAY_MEETUP", payload: meetup });
   };
 }
-
-export function login(loginInfo) {
+export function signup(user, history) {
   return dispatch => {
-    RestfulAdapter.login("login", {
+    RestfulAdapter.authPost("signup", {
+      user
+    })
+      .then(json => {
+        if (json.error) {
+          alert(json.error);
+        } else {
+          console.log("return from signup post ", json.user);
+          dispatch({ type: "SET_USER", user: json.user, token: json.token });
+        }
+      })
+      .then(history.push("/home"));
+  };
+}
+export function login(loginInfo) {
+  console.log("start login");
+  return dispatch => {
+    RestfulAdapter.authPost("login", {
       username: loginInfo.username,
       password: loginInfo.password
     }).then(json => {
+      console.log("in my .then");
       if (json.error) {
         alert(json.error);
       } else {
@@ -81,13 +98,18 @@ export function setUser() {
   };
 }
 
-export function updateUserLocation(user) {
+export function updateUserLocation(position, user) {
   return dispatch => {
-    RestfulAdapter.editFetch("users", user.id, {
-      current_latitude: user.latitude,
-      current_longitude: user.longitude
+    RestfulAdapter.editFetch("user/location", user.id, {
+      current_latitude: position.coords.latitude,
+      current_longitude: position.coords.longitude
     }).then(updated_user => {
-      dispatch({ type: "SET_USER", user: updated_user });
+      console.log("about to update location in action", updated_user);
+      dispatch({
+        type: "UPDATE_USER_LOCATION",
+        current_latitude: updated_user.current_latitude,
+        current_longitude: updated_user.current_longitude
+      });
     });
   };
 }
@@ -106,6 +128,9 @@ export function unselectMeetup() {
 
 export function updateLoginForm(loginFormData) {
   return { type: "UPDATE_LOGIN_FORM", payload: loginFormData };
+}
+export function updateSignupForm(signupFormData) {
+  return { type: "UPDATE_SIGNUP_FORM", payload: signupFormData };
 }
 
 export function selectFriend(friend) {

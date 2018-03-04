@@ -63,5 +63,10 @@ export default connect(
     selectedMeetup: state.meetupReducer.selectedMeetup,
     display: state.meetupReducer.display
   }),
-  { createMeetup, removeMeetupDisplay, updateMeetupUsers, unselectMeetup }
+  {
+    createMeetup,
+    removeMeetupDisplay,
+    updateMeetupUsers,
+    unselectMeetup
+  }
 )(MapContainer);

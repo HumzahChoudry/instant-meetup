@@ -94,4 +94,7 @@ const mapStateToProps = state => {
     selectedFriends: state.friendsReducer.selectedFriends
   };
 };
-export default connect(mapStateToProps, { selectFriend, deselectFriend })(Map);
+export default connect(mapStateToProps, {
+  selectFriend,
+  deselectFriend
+})(Map);

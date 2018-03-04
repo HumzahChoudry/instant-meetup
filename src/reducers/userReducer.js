@@ -2,7 +2,7 @@ export default function userReducer(
   state = {
     user: {},
     loading: false,
-    loginFormData: {username: "", password: ""}
+    loginFormData: { username: "", password: "" }
   },
   action
 ) {
@@ -11,7 +11,7 @@ export default function userReducer(
       return {
         ...state,
         loading: true
-      }
+      };
     case "USER_LOAD":
       return {
         ...state,
@@ -26,24 +26,32 @@ export default function userReducer(
     case "UPDATE_USER":
       return {
         ...state,
-        formData: {...state.formData, ...action.payload}
-      }
+        formData: { ...state.formData, ...action.payload }
+      };
     case "SET_USER":
-      localStorage.setItem('token', action.token)
+      console.log("setting user", action);
+      if (action.token) {
+        localStorage.setItem("token", action.token);
+      }
       return {
         ...state,
-        user: action.user,
-      }
+        user: { ...action.user }
+      };
     case "REMOVE_USER":
       return {
         ...state,
-        user: {},
-      }
+        user: {}
+      };
     case "UPDATE_USER_LOCATION":
-    return {
-      ...state,
-      user: {...state.user, ...action.payload}
-    }
+      console.log("IN REDUCER ABOUT TO CHANGE STATE");
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          current_latitude: action.current_latitude,
+          current_longitude: action.current_longitude
+        }
+      };
     default:
       return state;
   }
