@@ -59,7 +59,10 @@ class FriendSearch extends React.Component {
   resultsRenderer = props => {
     return (
       <div className="search-result">
-        {props.first_name} {props.last_name} <img src={props.profile_pic} />{" "}
+        <div className="search-result-text">
+          {props.first_name} {props.last_name}
+        </div>{" "}
+        <img className="search-result-image" src={props.profile_pic} />{" "}
       </div>
     );
   };

@@ -35,3 +35,27 @@
 .friend-name {
   float: left;
 }
+
+.search-result {
+}
+
+.search-result-text {
+  margin: auto;
+  display: inline;
+  font-size: 18px;
+  float: left;
+  line-height: 50px;
+}
+
+.search-result-image {
+  float: right;
+  display: block;
+  height: 50px;
+  width: auto;
+
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+}
