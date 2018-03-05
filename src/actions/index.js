@@ -8,6 +8,17 @@ export function fetchFriends(id) {
     });
   };
 }
+
+export function fetchAllUsers() {
+  return dispatch => {
+    dispatch({ type: "USER_LOADING" });
+    RestfulAdapter.indexFetch(`users`).then(data => {
+      console.log(data);
+      dispatch({ type: "USERS_LOAD", payload: data });
+    });
+  };
+}
+
 export function fetchMeetups(id) {
   return dispatch => {
     dispatch({ type: "MEETUPS_LOADING" });

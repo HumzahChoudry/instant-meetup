@@ -1,16 +1,24 @@
 import React from "react";
 import FriendsList from "./FriendsList";
+import FriendSearch from "./FriendSearch";
 import { connect } from "react-redux";
-import { fetchFriends, selectFriend, deselectFriend } from "../../actions";
+import {
+  fetchFriends,
+  fetchAllUsers,
+  selectFriend,
+  deselectFriend
+} from "../../actions";
 
 class FriendsContainer extends React.Component {
   componentDidMount() {
     this.props.fetchFriends(this.props.user.id);
+    this.props.fetchAllUsers();
   }
 
   render() {
     return (
       <div className="friends-container">
+        <FriendSearch />
         <FriendsList handleOnClick={this.selectOrDeselectFriend} />
       </div>
     );
@@ -28,8 +36,9 @@ class FriendsContainer extends React.Component {
 export default connect(
   state => ({
     user: state.userReducer.user,
+    users: state.userReducer.users,
     friends: state.friendsReducer.friends,
     selectedFriends: state.friendsReducer.selectedFriends
   }),
-  { fetchFriends, selectFriend, deselectFriend }
+  { fetchFriends, fetchAllUsers, selectFriend, deselectFriend }
 )(FriendsContainer);

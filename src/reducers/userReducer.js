@@ -1,6 +1,7 @@
 export default function userReducer(
   state = {
     user: {},
+    users: [],
     loading: false,
     loginFormData: { username: "", password: "" }
   },
@@ -16,6 +17,12 @@ export default function userReducer(
       return {
         ...state,
         user: action.payload,
+        loading: false
+      };
+    case "USERS_LOAD":
+      return {
+        ...state,
+        users: action.payload,
         loading: false
       };
     case "SELECT_USER":
