@@ -144,6 +144,14 @@ export function updateSignupForm(signupFormData) {
   return { type: "UPDATE_SIGNUP_FORM", payload: signupFormData };
 }
 
+export function addFriend(userAndFriendData) {
+  return dispatch => {
+    dispatch({ type: "FRIENDS_LOADING" });
+    RestfulAdapter.createFetch(`friendships`, userAndFriendData).then(data => {
+      dispatch({ type: "FRIEND_LOAD", payload: data });
+    });
+  };
+}
 export function selectFriend(friend) {
   return dispatch => {
     dispatch({ type: "SELECT_FRIEND", payload: friend });

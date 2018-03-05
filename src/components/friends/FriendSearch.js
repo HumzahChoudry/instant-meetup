@@ -2,6 +2,7 @@ import React from "react";
 import { Search } from "semantic-ui-react";
 import _ from "lodash";
 import { connect } from "react-redux";
+import { addFriend } from "../../actions";
 
 class FriendSearch extends React.Component {
   constructor(props) {
@@ -9,7 +10,8 @@ class FriendSearch extends React.Component {
     this.state = {
       isLoading: false,
       value: "",
-      results: []
+      results: [],
+      selectedFriend: null
     };
   }
 
@@ -18,10 +20,26 @@ class FriendSearch extends React.Component {
   }
 
   resetComponent = () =>
-    this.setState({ isLoading: false, results: [], value: "" });
+    this.setState({
+      isLoading: false,
+      results: [],
+      value: "",
+      selectedFriend: null
+    });
 
-  handleResultSelect = (e, { result }) =>
-    this.setState({ value: result.username });
+  handleResultSelect = (e, { result }) => {
+    this.setState(
+      { value: "", selectedFriend: result.id },
+      this.handleAddFriend(result.id)
+    );
+  };
+
+  handleAddFriend = id => {
+    this.props.addFriend({
+      friendId: id,
+      user: this.props.user
+    });
+  };
 
   handleSearchChange = (e, { value }) => {
     this.setState({ isLoading: true, value });
@@ -65,8 +83,11 @@ class FriendSearch extends React.Component {
   }
 }
 
-export default connect(state => ({
-  user: state.userReducer.user,
-  users: state.userReducer.users,
-  friends: state.friendsReducer.friends
-}))(FriendSearch);
+export default connect(
+  state => ({
+    user: state.userReducer.user,
+    users: state.userReducer.users,
+    friends: state.friendsReducer.friends
+  }),
+  { addFriend }
+)(FriendSearch);

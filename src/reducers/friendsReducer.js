@@ -18,6 +18,12 @@ export default function friendReducer(
         friends: action.payload,
         loading: false
       };
+    case "FRIEND_LOAD":
+      return {
+        ...state,
+        friends: [...state.friends, action.payload],
+        loading: false
+      };
     case "SELECT_FRIEND":
       if (!state.selectedFriends.includes(action.payload)) {
         return {
