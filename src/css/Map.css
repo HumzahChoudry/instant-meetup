@@ -11,8 +11,8 @@
 .google-map {
   resize: both;
   grid-area: a;
-  width: 600px;
-  height: 500px;
+  width: 750px;
+  height: 600px;
   border-color: black;
   border-width: 1px;
   grid-column-start: 1;

@@ -8,6 +8,7 @@ import { Route, Switch, Redirect, withRouter } from "react-router-dom";
 import Homepage from "./components/Homepage";
 import Signup from "./components/Signup";
 import LoginPage from "./components/LoginPage";
+import MeetupPage from "./components/MeetupPage";
 import { RestfulAdapter } from "./adapters";
 import { connect } from "react-redux";
 import { setUser, logout } from "./actions";
@@ -34,13 +35,16 @@ class App extends Component {
           <Route path="/home" component={Homepage} />
           <Route path="/login" component={LoginPage} />
           <Route path="/signup" component={Signup} />
+          <Route
+            path="/meetup/:id"
+            render={routerProps => <MeetupPage {...routerProps} />}
+          />
           <Redirect from="/" to="/home" />
         </Switch>
       </div>
     );
   }
 }
-
 const mapStateToProps = state => {
   return { user: state.userReducer.user };
 };

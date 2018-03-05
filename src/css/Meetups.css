@@ -1,5 +1,22 @@
 .meetups-container {
-  grid-column: 3 / 7;
+  grid-column: 2 / 7;
+}
+
+.meetup-list {
+  margin: auto;
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.meetup-card {
+  padding: 10px;
+  height: 400px;
+  width: auto;
+}
+
+.meetup-card-image {
+  height: 250px;
 }
 
 .meetup-display {

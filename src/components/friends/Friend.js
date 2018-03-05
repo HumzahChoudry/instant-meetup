@@ -14,6 +14,7 @@ class Friend extends React.Component {
       <Card
         color={selectedDisplay}
         onClick={() => this.props.onClick(this.props.friend)}
+        style={{ backgroundColor: selectedDisplay ? "#d1f2cb" : "#f7f7f7" }}
       >
         <Card.Content>
           <Image
