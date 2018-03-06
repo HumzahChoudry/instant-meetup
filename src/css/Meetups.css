@@ -2,6 +2,10 @@
   grid-column: 2 / 7;
 }
 
+.create-meetup-div {
+  border: solid 1px blue;
+}
+
 .meetup-list {
   margin: auto;
   display: inline-flex;
@@ -20,15 +24,14 @@
 }
 
 .meetup-display {
-  grid-column: 1 / 2;
+  grid-column: 2 / 3;
   grid-row: 1 / 2;
   padding-top: 10px;
-  display: block; /* Hidden by default */
+  display: block;
   position: relative;
-  margin: auto;
   z-index: 1; /* Sit on top */
-  width: 600px;
-  height: 500px;
+  width: 750px;
+  height: 600px;
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
@@ -39,7 +42,7 @@
 }
 /* Modal Content/Box */
 .meetup-display-content {
-  background-color: #fefefe;
+  background-color: rgb(202, 235, 242);
   margin: auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;

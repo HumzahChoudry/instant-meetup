@@ -72,7 +72,6 @@ class FriendSearch extends React.Component {
 
     return (
       <div>
-        <p>UserCount: {this.props.users.length}</p>
         <Search
           loading={isLoading}
           onResultSelect={this.handleResultSelect}

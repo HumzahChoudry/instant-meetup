@@ -3,20 +3,9 @@
   padding-top: 10px;
 }
 .friends-list {
-  height: 500px;
+  height: 545px;
   overflow: auto;
   padding: 1em;
-}
-.selected {
-  background-color: red;
-}
-
-.friend-selected {
-  background-color: blue;
-}
-
-.friend-not-selected {
-  background-color: red;
 }
 
 .friend-card-image {
@@ -34,6 +23,41 @@
 
 .friend-name {
   float: left;
+}
+
+.friend-location {
+}
+
+.hover-display {
+  margin-top: -20px;
+  margin-left: 40px;
+}
+
+.clearfix:after {
+  content: ” “;
+  visibility: hidden;
+  display: block;
+  height: 0;
+  width: 0;
+  clear: both;
+}
+
+.friend-display-info {
+  float: right;
+  background-color: white;
+  border-radius: 15%;
+  padding: 1px;
+  background-color: rgba(247, 247, 247, 0.75);
+  border: 1px solid rgba(0, 176, 236, 0.6);
+}
+
+.hover-display-pic {
+  height: 30px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
 }
 
 .search-result {

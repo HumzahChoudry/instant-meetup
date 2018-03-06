@@ -5,7 +5,7 @@ import FriendMarker from "./FriendMarker";
 const FriendLocation = props => {
   let hoverDisplay;
   if (props.$hover) {
-    hoverDisplay = "block"; //need to switch this and block back
+    hoverDisplay = "block";
   } else {
     hoverDisplay = "none";
   }
@@ -22,8 +22,10 @@ const FriendLocation = props => {
         width="15"
       />
       <div className="hover-display" style={{ display: hoverDisplay }}>
-        <img src={props.friend.profile_pic} />
-        <span>Hello</span>
+        <span className="friend-display-info">
+          <img className="hover-display-pic" src={props.friend.profile_pic} />{" "}
+          {props.friend.first_name}
+        </span>
       </div>
     </div>
   );
