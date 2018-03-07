@@ -7,7 +7,7 @@ const FriendLocation = props => {
   if (props.$hover) {
     hoverDisplay = "block";
   } else {
-    hoverDisplay = "none";
+    hoverDisplay = "none"; //none
   }
 
   return (

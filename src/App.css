@@ -1,3 +1,14 @@
+body {
+  color: #6a6f8c;
+  background: #f2f3f4;
+  font: 600 16px/18px "Open Sans", sans-serif;
+}
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
 }
@@ -5,13 +16,6 @@
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
 }
 
 .App-title {
@@ -40,6 +44,12 @@
 
 .hover-display > img {
   display: inline;
+}
+
+.header {
+  font-size: 2em;
+  padding: 10px;
+  padding-top: 15px;
 }
 
 /* .hover-display:hover {

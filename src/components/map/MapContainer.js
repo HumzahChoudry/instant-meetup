@@ -44,8 +44,11 @@ class MapContainer extends React.Component {
   };
 
   handleCreate = e => {
-    let checked = e.target.parentElement.childNodes[2].checked;
-    let keyword = e.target.parentElement.childNodes[3].value;
+    debugger;
+    let checked =
+      e.target.parentElement.childNodes[1].childNodes[0].childNodes[3].checked;
+    let keyword =
+      e.target.parentElement.childNodes[1].childNodes[0].childNodes[1].value;
     this.props.createMeetup(
       this.props.user.id,
       this.props.selectedFriends,

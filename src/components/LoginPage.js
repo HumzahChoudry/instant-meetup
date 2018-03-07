@@ -29,28 +29,44 @@ class LoginPage extends React.Component {
   };
   render() {
     return (
-      <div>
+      <div login-wrap>
         {this.props.user.id ? (
           <Redirect to="/home" />
         ) : (
-          <div className="login-form">
-            <form onSubmit={this.login}>
-              <input
-                type="text"
-                name="username"
-                placeholder="Username"
-                value={this.state.username}
-                onChange={this.handleChange}
-              />
-              <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                value={this.state.password}
-                onChange={this.handleChange}
-              />
-              <input type="submit" />
-            </form>
+          <div className="login-html">
+            <div className="login-form">
+              <form onSubmit={this.login} className="sign-in-htm">
+                <div className="group">
+                  <label for="user" class="label">
+                    Username
+                  </label>
+                  <input
+                    type="text"
+                    name="username"
+                    className="input"
+                    placeholder="Username"
+                    value={this.state.username}
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <div className="group">
+                  <label for="pass" class="label">
+                    Password
+                  </label>
+                  <input
+                    type="password"
+                    name="password"
+                    className="input"
+                    placeholder="Password"
+                    value={this.state.password}
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <div className="group">
+                  <input type="submit" />
+                </div>
+              </form>
+            </div>
           </div>
         )}
       </div>

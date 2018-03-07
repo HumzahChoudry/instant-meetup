@@ -1,0 +1,43 @@
+.login-html {
+  background: url("https://media.gettyimages.com/photos/male-friends-hanging-out-picture-id464722601");
+  height: 91.4vh;
+}
+
+.login-form {
+  min-height: 100px;
+  position: relative;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  display: flex;
+  justify-content: center;
+}
+
+.sign-in-htm {
+  margin-top: 100px;
+  padding: 30px 100px;
+  background: rgba(65, 131, 196, 0.5);
+  border-radius: 30px;
+  border: solid 1px;
+}
+
+.login-form .group {
+  margin-bottom: 15px;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px rgba(194, 236, 237, 1) inset;
+}
+.login-form .group .label,
+.login-form .group .input,
+.login-form .group .button {
+  width: 100%;
+  color: #fff;
+  display: block;
+}
+.login-form .group .input,
+.login-form .group .button {
+  border: none;
+  padding: 15px 20px;
+  border-radius: 25px;
+  background: rgb(194, 236, 237);
+}
