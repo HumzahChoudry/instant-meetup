@@ -5,13 +5,16 @@
 .create-meetup-div {
   width: 750px;
   margin: auto;
-  margin-top: -5px;
 }
 
 #create-meetup-button {
   background-color: #2b2f3a;
   color: rgb(45, 132, 194);
   margin-bottom: 5px;
+}
+
+.brand-logo-create-meetup {
+  height: 40px;
 }
 
 .meetup-list {

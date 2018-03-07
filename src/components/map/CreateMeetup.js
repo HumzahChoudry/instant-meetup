@@ -12,7 +12,7 @@ const CreateMeetup = props => {
         content={
           <img
             src={require("../../css/gather-nav.png")}
-            className="brand-logo"
+            className="brand-logo-create-meetup"
           />
         }
       />
