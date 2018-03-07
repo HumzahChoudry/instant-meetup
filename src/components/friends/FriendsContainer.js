@@ -6,7 +6,8 @@ import {
   fetchFriends,
   fetchAllUsers,
   selectFriend,
-  deselectFriend
+  deselectFriend,
+  unselectMeetup
 } from "../../actions";
 
 class FriendsContainer extends React.Component {
@@ -30,6 +31,9 @@ class FriendsContainer extends React.Component {
     } else {
       this.props.selectFriend(friend);
     }
+    if (this.props.selectedMeetup) {
+      this.props.unselectMeetup();
+    }
   };
 }
 
@@ -38,7 +42,8 @@ export default connect(
     user: state.userReducer.user,
     users: state.userReducer.users,
     friends: state.friendsReducer.friends,
-    selectedFriends: state.friendsReducer.selectedFriends
+    selectedFriends: state.friendsReducer.selectedFriends,
+    selectedMeetup: state.meetupReducer.selectedMeetup
   }),
-  { fetchFriends, fetchAllUsers, selectFriend, deselectFriend }
+  { fetchFriends, fetchAllUsers, selectFriend, deselectFriend, unselectMeetup }
 )(FriendsContainer);

@@ -31,21 +31,4 @@ const FriendLocation = props => {
   );
 };
 
-// debugger;
-// return (
-//   <Popup
-//     trigger={
-//       <div>
-//         <img
-//           width="50"
-//           height="50"
-//           src="http://www.pngall.com/wp-content/uploads/2017/05/Map-Marker-PNG-Pic.png"
-//         />
-//       </div>
-//     }
-//   >
-//     <Popup.Header>Friend Name</Popup.Header>
-//     <Popup.Content />
-//   </Popup>
-
 export default FriendLocation;

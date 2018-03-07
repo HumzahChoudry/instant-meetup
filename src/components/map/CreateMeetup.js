@@ -3,15 +3,19 @@ import { Button } from "semantic-ui-react";
 
 const CreateMeetup = props => {
   return (
-    <div className="create-meetup-div">
+    <form className="create-meetup-div" onSubmit={e => props.onClick(e)}>
       <Button
         id="create-meetup-button"
-        onClick={e => props.onClick(e)}
+        type="submit"
         fluid="true"
         size="huge"
-      >
-        Gather!{" "}
-      </Button>
+        content={
+          <img
+            src={require("../../css/gather-nav.png")}
+            className="brand-logo"
+          />
+        }
+      />
       <div className="meetup-options">
         <p>
           <label>Venue Type </label>
@@ -30,7 +34,7 @@ const CreateMeetup = props => {
           />
         </p>
       </div>
-    </div>
+    </form>
   );
 };
 

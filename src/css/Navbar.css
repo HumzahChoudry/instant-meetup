@@ -3,11 +3,10 @@
 }
 
 .brand-logo {
-  background-color: red;
+  height: 50px;
 }
 
 .brand-logo-div {
-  margin: auto;
   float: left;
 }
 
@@ -24,7 +23,7 @@
 }
 
 .nav-links {
-  font-size: 1.5em;
+  font-size: 1.75em;
 }
 
 button.nav-link {
@@ -36,9 +35,11 @@ button.nav-link {
   cursor: pointer;
   outline: inherit;
   padding-right: 8px;
+  margin-top: 5px;
 }
 
 .nav-link {
   float: right;
   padding-right: 8px;
+  margin-top: 5px;
 }

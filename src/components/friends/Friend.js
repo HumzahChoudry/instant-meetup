@@ -27,7 +27,7 @@ class Friend extends React.Component {
           </Card.Header>
           <Card.Meta textAlign="left">Friend</Card.Meta>
           <Card.Description textAlign="left">
-            A description of this person would be written here
+            {this.props.friend.status}
           </Card.Description>
         </Card.Content>
       </Card>

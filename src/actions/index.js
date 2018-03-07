@@ -37,6 +37,7 @@ export function createMeetup(id, selectedFriends, pub, keyword) {
       public: pub,
       keyword: keyword
     }).then(meetup => {
+      debugger;
       dispatch({ type: "ADD_NEW_MEETUP", payload: meetup });
       dispatch({ type: "SELECT_MEETUP", payload: meetup });
       dispatch({ type: "DISPLAY_MEETUP", payload: meetup });
@@ -48,7 +49,6 @@ export function updateMeetupUsers(meetup) {
     RestfulAdapter.editFetch("meetups", meetup.id, {
       users: meetup.users
     }).then(meetup => {
-      console.log(meetup);
       dispatch({ type: "UPDATE_MEETUP", payload: meetup });
     });
   };

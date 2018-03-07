@@ -7,9 +7,10 @@ const Navbar = props => {
       <div className="nav-wrapper">
         <ul id="" className="nav-bar">
           <div className="brand-logo-div">
-            <a href="#" className="brand-logo">
-              Logo
-            </a>
+            <img
+              src={require("../css/gather-nav.png")}
+              className="brand-logo"
+            />
           </div>
           <div className="nav-links">
             {props.user.id ? (
@@ -37,5 +38,5 @@ const Navbar = props => {
     </nav>
   );
 };
-
+//https://image.ibb.co/gQZtk7/Gather_logo_finished_v3.jpg
 export default Navbar;

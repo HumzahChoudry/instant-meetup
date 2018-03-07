@@ -28,7 +28,6 @@ input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 30px rgba(194, 236, 237, 1) inset;
 }
 .login-form .group .label,
-.login-form .group .input,
 .login-form .group .button {
   width: 100%;
   color: #fff;
