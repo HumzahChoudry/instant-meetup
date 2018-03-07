@@ -1,0 +1,12 @@
+.attendees {
+  display: inline;
+}
+.attendee {
+  display: inline;
+}
+
+.attendee-photo {
+  display: inline;
+  height: 50px;
+  border-radius: ;
+}
