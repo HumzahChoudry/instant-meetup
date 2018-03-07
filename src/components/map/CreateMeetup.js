@@ -7,7 +7,7 @@ const CreateMeetup = props => {
       <Button
         id="create-meetup-button"
         type="submit"
-        fluid="true"
+        fluid={true}
         size="huge"
         content={
           <img
@@ -22,8 +22,6 @@ const CreateMeetup = props => {
           <select name="type">
             <option value="bar">Bar</option>
             <option value="restaurant">Restaurant</option>
-            <option value="park">Park</option>
-            <option value="movie_theater">Movie Theater</option>
           </select>
           <label> Public: </label>
           <input

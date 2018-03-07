@@ -69,7 +69,6 @@ class FriendSearch extends React.Component {
 
   render() {
     const { isLoading, value, results, users } = this.state;
-
     return (
       <div>
         <Search

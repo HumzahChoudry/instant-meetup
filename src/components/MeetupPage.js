@@ -11,7 +11,7 @@ const MeetupPage = props => {
     props.meetup.location.lng
   }`;
   let restaurantLink = `https://www.google.com/maps/place/${restaurantName}/{restarestaurantLocation}z/`;
-  //let inMeetup = props.meetup.users.filter(user => user.id === props.user.id).length;
+
   return (
     <div className="meetup-page">
       <div className="meetup-info">
@@ -27,22 +27,7 @@ const MeetupPage = props => {
           {props.meetup.host.last_name}
         </p>
         <span className="attendees">{attendees}</span>
-        <p>
-          {0 < 1 ? (
-            <button onClick={e => props.addUserToMeetup(e, props.meetup)}>
-              Join!
-            </button>
-          ) : (
-            <p>
-              You're attending!{" "}
-              <button
-                onClick={e => props.removeUserFromMeetup(e, props.meetup)}
-              >
-                Leave
-              </button>
-            </p>
-          )}
-        </p>
+        <p />
         <img id="display-image" src={props.meetup.location.photo} />
       </div>
     </div>

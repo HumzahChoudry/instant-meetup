@@ -29,7 +29,7 @@ class LoginPage extends React.Component {
   };
   render() {
     return (
-      <div login-wrap>
+      <div className="login-wrap">
         {this.props.user.id ? (
           <Redirect to="/home" />
         ) : (
@@ -37,9 +37,7 @@ class LoginPage extends React.Component {
             <div className="login-form">
               <form onSubmit={this.login} className="sign-in-htm">
                 <div className="group">
-                  <label for="user" class="label">
-                    Username
-                  </label>
+                  <label className="label">Username</label>
                   <input
                     type="text"
                     name="username"
@@ -50,9 +48,7 @@ class LoginPage extends React.Component {
                   />
                 </div>
                 <div className="group">
-                  <label for="pass" class="label">
-                    Password
-                  </label>
+                  <label className="label">Password</label>
                   <input
                     type="password"
                     name="password"

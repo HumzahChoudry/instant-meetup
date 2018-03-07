@@ -17,10 +17,8 @@ const Meetup = props => {
           <Card.Description>Location Description</Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <a>
-            <Icon name="user" />
-            {props.meetup.users.length}
-          </a>
+          <Icon name="user" />
+          {props.meetup.users.length}
         </Card.Content>
       </Card>
     </Link>
