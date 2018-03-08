@@ -7,7 +7,11 @@ const MeetupsList = props => {
     <Meetup key={meetup.id} meetup={meetup} onClick={props.onClick} />
   ));
 
-  return <div className="meetup-list">{meetups}</div>;
+  return (
+    <div id="meetups" className="meetup-list">
+      {meetups}
+    </div>
+  );
 };
 
 const mapStateToProps = state => {

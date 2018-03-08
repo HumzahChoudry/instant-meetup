@@ -6,12 +6,12 @@ const Navbar = props => {
     <nav>
       <div className="nav-wrapper">
         <ul id="" className="nav-bar">
-          <div className="brand-logo-div">
+          <Link to="/home" className="brand-logo-div">
             <img
               src={require("../css/gather-nav.png")}
               className="brand-logo"
             />
-          </div>
+          </Link>
           <div className="nav-links">
             {props.user.id ? (
               <li>
@@ -30,7 +30,7 @@ const Navbar = props => {
               <Link to="/home">Home</Link>
             </li>
             <li className="nav-link">
-              <Link to="/meetups">Meetups</Link>
+              <a href="#meetups">Meetups</a>
             </li>
           </div>
         </ul>
